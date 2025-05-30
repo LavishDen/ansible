@@ -1,0 +1,15 @@
+- name: variables from prompt
+  hosts: local
+  connection: local  # to run as root user sudo access
+  vars_prompt:
+    - name: USERNAME
+      prompt: "Enter the course name"
+      private: no  # set to yes if you want to hide the input
+    - name: PASSWORD
+      prompt: "Enter the course password"
+      private: yes
+
+  tasks:
+    - name: print user information
+      ansible.builtin.debug:
+        msg: "Hello username is : {{ USERNAME }}, password is : {{ PASSWORD }}"
