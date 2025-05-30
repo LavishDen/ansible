@@ -1,0 +1,13 @@
+- name: Variables from files
+  hosts: local
+  connection: local  # to run as root user sudo access
+  vars_files:
+   - course.yaml       # file name with path
+  tasks:
+    - name: print course information
+      ansible.builtin.debug:
+        msg: " Hello I am learning Course: {{ COURSE }}, Duration: {{ DURATION }}, Trainer: {{ TRAINER }}" # vars reference should be surrounded by double quotes 
+
+    - name: print course information with single quotes
+      ansible.builtin.debug:
+        msg: 'Hello my details Course: {{ COURSE }}, Duration: {{ DURATION }}, Trainer: {{ TRAINER }}' # vars reference should be surrounded by single quotes
