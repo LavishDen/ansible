@@ -1,0 +1,19 @@
+- name: play level variables
+  hosts: local
+  connection: local  # to run as root user sudo access
+  vars:
+    COURSE: Ansible
+    DURATION: 10HR
+    TRAINER: Sivakumar
+  tasks:
+    - name: print course information
+      vars:
+        COURSE: DevOps
+        DURATION: 20HR
+        TRAINER: John Doe
+      ansible.builtin.debug:
+        msg: "Course: {{ COURSE }}, Duration: {{ DURATION }}, Trainer: {{ TRAINER }}" # vars reference should be surrounded by double quotes 
+
+    - name: print course information with single quotes
+      ansible.builtin.debug:
+        msg: 'Course: {{ COURSE }}, Duration: {{ DURATION }}, Trainer: {{ TRAINER }}' # vars reference should be surrounded by single quotes    
